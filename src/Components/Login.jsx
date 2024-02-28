@@ -54,11 +54,12 @@ const Login = () => {
   }, []);
 
   return (
-    <div>
+    <div className="d-flex justify-content-center">
       <div className="mb-3">
         {!isLoggedIn && (
-          <button className="login-btn btn btn-danger" onClick={googleLogin}>
+          <button className="login-btn btn btn-danger text-center" onClick={googleLogin}>
             Login with Google <FontAwesomeIcon icon={faGoogle} />
+            <img src="https://t4.ftcdn.net/jpg/04/60/71/01/360_F_460710131_YkD6NsivdyYsHupNvO3Y8MPEwxTAhORh.jpg" alt="" />
           </button>
         )}
         {isLoggedIn && (
@@ -67,6 +68,7 @@ const Login = () => {
       </div>
     </div>
   );
+  
 };
 
 export default Login;
