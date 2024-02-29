@@ -37,7 +37,7 @@ const EconomicSection = () => {
   return (
     <div className="container mt-3">
       <div className="text-center mb-3">
-        <b>
+        <b className="display-3">
           ECONOMICS NEWS{" "}
           <Link to={"/economicsNews"}>
             <FontAwesomeIcon
@@ -50,12 +50,12 @@ const EconomicSection = () => {
       </div>
 
       <div className="row">
-        <div className="col-md-8">
+        <div className="col-md-10">
           <div className="card-group">
             {data.map((item, index) => (
               <div key={index} className="card mb-3">
                 <div className="card-body">
-                  <h5 className="card-title">{item.title}</h5>
+                  <h5 className="card-title"><u>{item.title}</u></h5>
                   <p className="card-text">{item.description}</p>
                   <small>
                     <button className="btn btn-danger" onClick={()=>deleteNews(item._id)}>
@@ -67,7 +67,7 @@ const EconomicSection = () => {
             ))}
           </div>
         </div>
-        <div className="col-md-4">
+        <div className="col-md-2 ">
           <img
             className="img-fluid"
             src="https://c1.wallpaperflare.com/preview/610/200/858/refugees-economic-migrants-financial-equalization-help.jpg"

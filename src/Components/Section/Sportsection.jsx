@@ -32,7 +32,7 @@ const Sportsection = () => {
   return (
     <div className="container mt-3">
       <div className="text-center mb-3">
-        <b>
+        <b className="display-3">
           SPORTSNEWS{" "}
           <Link to={"/sportsNews"}>
             <FontAwesomeIcon
@@ -50,7 +50,7 @@ const Sportsection = () => {
             {news.map((item, index) => (
               <div key={index} className="card-body text-center">
                 <div>
-                  <h5 className="card-title">{item.title}</h5>
+                  <h5 className="card-title"><u>{item.title}</u></h5>
                   <p className="card-text">{item.description}</p>
                   <small>
                     <button

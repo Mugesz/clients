@@ -37,7 +37,7 @@ const CrimeSection = () => {
     <>
       <div className="container top-crime">
         <div className="text-center">
-          <b>
+          <b className="display-3">
             CRIME NEWS{" "}
             <Link to='/crimeNews'>
               <FontAwesomeIcon
@@ -54,7 +54,7 @@ const CrimeSection = () => {
               <div className="card-body">
                 {data.map((item, index) => (
                   <div key={index}>
-                    <h5 className="card-title">{item.title}</h5>
+                    <h5 className="card-title"><u>{item.title}</u></h5>
                     <p className="card-text">{item.description}</p>
                     
                     <button  className="btn btn-danger" onClick={() => deleteNews(item._id)}>

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGoogle } from "@fortawesome/free-brands-svg-icons";
+
 import {
   signInWithPopup,
   GoogleAuthProvider,
@@ -57,10 +56,12 @@ const Login = () => {
     <div className="d-flex justify-content-center">
       <div className="mb-3">
         {!isLoggedIn && (
+        <div className="">
+            <h1  className="mt-5 mb-5 text-center">Login with Google </h1>
           <button className="login-btn btn btn-danger text-center" onClick={googleLogin}>
-            Login with Google <FontAwesomeIcon icon={faGoogle} />
             <img src="https://t4.ftcdn.net/jpg/04/60/71/01/360_F_460710131_YkD6NsivdyYsHupNvO3Y8MPEwxTAhORh.jpg" alt="" />
           </button>
+        </div>
         )}
         {isLoggedIn && (
           <ProtuctedRoute logout={Logout} userData={userData} />
