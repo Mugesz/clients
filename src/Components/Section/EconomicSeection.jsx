@@ -72,6 +72,8 @@ const EconomicSection = () => {
             className="img-fluid"
             src="https://c1.wallpaperflare.com/preview/610/200/858/refugees-economic-migrants-financial-equalization-help.jpg"
             alt=""
+            height="300px"
+            width="200px"
           />
         </div>
       </div>

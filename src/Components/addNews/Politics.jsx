@@ -2,8 +2,10 @@ import axios from 'axios';
 import { useFormik } from 'formik';
 import React from 'react';
 import { config } from '../fetch';
+import { useNavigate } from 'react-router-dom';
 
 const useSports = () => {
+  const navigate = useNavigate()
   const formik = useFormik({
     initialValues: {
       title: "",
@@ -25,6 +27,7 @@ const useSports = () => {
             await axios.post(`${config.Api}/politicsnews/create-news`, values);
             alert("Success");
             formikbag.resetForm()
+            navigate("/")
         } catch (error) {
             if (error.response) {
              

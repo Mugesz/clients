@@ -53,6 +53,8 @@ const Worldnews = () => {
             src="https://wallpapers.com/images/hd/world-globe-hufe8df2snrioyyp.jpg"
             className=" img-fluid rounded-circle"
             alt=""
+            height="400px"
+            width="500px"
           />
           <div className="card">
             {data.map((item, index) => (

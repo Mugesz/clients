@@ -10,6 +10,7 @@ import Crime from "./Components/addNews/Crime";
 import Economics from "./Components/addNews/Economics";
 import Politics from "./Components/addNews/Politics";
 import World from "./Components/addNews/World";
+import AllNews from "./Components/AllNews";
 
 function App() {
   return (
