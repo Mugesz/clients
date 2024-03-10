@@ -5,12 +5,12 @@ import {getStorage} from "firebase/storage"
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBKvvOXrl11YQoWjrCnX5fpqNzp16yuYrc",
-  authDomain: "news-app-fea4d.firebaseapp.com",
-  projectId: "news-app-fea4d",
-  storageBucket: "news-app-fea4d.appspot.com",
-  messagingSenderId: "890792137287",
-  appId: "1:890792137287:web:f9579dc43cff53103f5762"
+  apiKey: "AIzaSyBzj7dBiCHbhyNyhaGvYNK0HMCRL4rgQ0k",
+  authDomain: "newsportal-43180.firebaseapp.com",
+  projectId: "newsportal-43180",
+  storageBucket: "newsportal-43180.appspot.com",
+  messagingSenderId: "412073587945",
+  appId: "1:412073587945:web:9dbd24d3d8b42365a22c78"
 };
 
 
