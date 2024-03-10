@@ -33,7 +33,9 @@ const EconomicSection = () => {
   useEffect(() => {
     fetchNews();
   }, []);
-
+  if(data.length === 0){
+    return <h1>...Loading</h1>
+  }
   return (
     <div className="container mt-3">
       <div className="text-center mb-3">
