@@ -18,6 +18,7 @@ const Login = () => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
       .then((result) => {
+        console.log(result.user); // Log the user object
         const { displayName, email, photoURL } = result.user;
         setUserData({ displayName, email, photoURL });
         setIsLoggedIn(true);
@@ -26,6 +27,7 @@ const Login = () => {
         console.log(error);
       });
   };
+  
 
   const Logout = () => {
     signOut(auth)
@@ -40,6 +42,7 @@ const Login = () => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (result) => {
+      console.log(result)
       if (result) {
         const { displayName, email, photoURL } = result;
         setUserData({ displayName, email, photoURL });

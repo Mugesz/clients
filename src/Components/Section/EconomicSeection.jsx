@@ -37,9 +37,16 @@ const EconomicSection = () => {
     return <h1>...Loading</h1>
   }
   return (
-    <div className="container mt-3">
+    <div className="container mt-5 mb-5">
       <div className="text-center mb-3">
         <b className="display-3">
+        <img
+              src="https://png.pngtree.com/thumb_back/fw800/background/20230907/pngtree-more-economic-news-from-hong-kong-image_13348332.jpg"
+              alt=""
+              className="rounded me-3"
+              height="100px"
+              width="100px"
+            />
           ECONOMICS NEWS{" "}
           <Link to={"/economicsNews"}>
             <FontAwesomeIcon
@@ -51,13 +58,13 @@ const EconomicSection = () => {
         </b>
       </div>
 
-      <div className="row">
-        <div className="col-md-10">
+      <div className="d-flex">
+        <div className="justify-content-center gap-5">
           <div className="card-group">
             {data.map((item, index) => (
               <div key={index} className="card mb-3">
                 <div className="card-body">
-                  <h5 className="card-title"><u>{item.title}</u></h5>
+                  <h5 className="card-title mb-4"><u>{item.title}</u></h5>
                   <p className="card-text">{item.description}</p>
                   <small>
                     <button className="btn btn-danger" onClick={()=>deleteNews(item._id)}>
@@ -68,15 +75,6 @@ const EconomicSection = () => {
               </div>
             ))}
           </div>
-        </div>
-        <div className="col-md-2 ">
-          <img
-            className="img-fluid"
-            src="https://c1.wallpaperflare.com/preview/610/200/858/refugees-economic-migrants-financial-equalization-help.jpg"
-            alt=""
-            height="300px"
-            width="200px"
-          />
         </div>
       </div>
     </div>

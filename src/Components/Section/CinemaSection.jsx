@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus,faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { config } from "../fetch";
@@ -32,52 +32,60 @@ const CinemaSection = () => {
     fetchNews();
   }, []);
 
-  if(data.length === 0){
-    return <h1>...Loading</h1>
+  if (data.length === 0) {
+    return <h1>...Loading</h1>;
   }
-  return (
-    <>
-      <div className="container mt-3">
-        <div className="text-center mb-3">
-          <b className="display-3">
-            CINEMA NEWS{" "}
-            <Link to="/cinemaNews">
-              <FontAwesomeIcon
-                className="plus"
-                icon={faPlus}
-                style={{ color: "#000000" }}
-              />
-            </Link>
-          </b>
-        </div>
 
-        <div className="row">
-          <div className="col-md-6">
-            <img
-              src="https://e1.pxfuel.com/desktop-wallpaper/870/201/desktop-wallpaper-cinema-cine.jpg"
-              alt=""
-              className="img-fluid rounded"
+  return (
+    <div className="container mt-3 ">
+      <div className="text-center mb-3">
+        <b className="display-3">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5on7t1U65vc9jBdOCmc225ybno_cqwV9gqw&usqp=CAU"
+            alt=""
+            className="rounded me-3"
+            height="100px"
+            width="100px"
+          />
+          CINEMA NEWS{" "}
+          <Link to="/cinemaNews">
+            <FontAwesomeIcon
+              className="plus"
+              icon={faPlus}
+              style={{ color: "#000000" }}
             />
-          </div>
-          <div className="col-md-6">
-            <div className="card">
+          </Link>
+        </b>
+      </div>
+
+      <div className="row justify-content-center">
+        <div className="col-lg-8">
+          {data.map((item, index) => (
+            <div key={index} className="card mb-3 bg-cinema">
               <div className="card-body">
-                {data.map((item, index) => (
-                  <div key={index}>
-                    <h5 className="card-title"><u>{item.title}</u></h5>
-                    <p className="card-text">{item.description}</p>
-                    <button  className="btn btn-danger" onClick={()=>deleteNews(item._id)} >
-                    <FontAwesomeIcon icon={faTrashAlt} style={{"--fa-primary-color": "#0052e0", "--fa-secondary-color": "#0050db",}} />
-                    </button>
-                    <hr />
-                  </div>
-                ))}
+                <h5 className="card-title">
+                  <u>{item.title}</u>
+                </h5>
+                <p className="card-text">{item.description}</p>
+                <button
+                  className="btn btn-danger"
+                  onClick={() => deleteNews(item._id)}
+                >
+                  <FontAwesomeIcon
+                    icon={faTrashAlt}
+                    style={{
+                      "--fa-primary-color": "#0052e0",
+                      "--fa-secondary-color": "#0050db",
+                    }}
+                  />
+                </button>
+                <hr />
               </div>
             </div>
-          </div>
+          ))}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

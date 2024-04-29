@@ -14,11 +14,7 @@ const AllNews = () => {
       <EconomicSeection />
       <Politics />
       <CinemaSection />
-
       <Sportsection />
-
-      <Worldnews />
-
       <Footer />
     </>
   );

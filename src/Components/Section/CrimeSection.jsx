@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus,faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { config } from "../fetch";
 import { Link } from "react-router-dom";
@@ -32,16 +32,23 @@ const CrimeSection = () => {
     fetchNews();
   }, []);
 
-  if(data.length === 0){
-    return <h1>...Loading</h1>
+  if (data.length === 0) {
+    return <h1>...Loading</h1>;
   }
   return (
     <>
       <div className="container top-crime">
         <div className="text-center">
           <b className="display-3">
+            <img
+              src="https://images.news18.com/ibnlive/uploads/2022/08/crime-in-india-166185841216x9.jpg"
+              alt=""
+              className="rounded me-3"
+              height="100px"
+              width="100px"
+            />
             CRIME NEWS{" "}
-            <Link to='/crimeNews'>
+            <Link to="/crimeNews">
               <FontAwesomeIcon
                 className="plus"
                 icon={faPlus}
@@ -50,30 +57,32 @@ const CrimeSection = () => {
             </Link>
           </b>
         </div>
-        <div className="row">
-          <div className="col-md-8">
-            <div className="card">
-              <div className="card-body">
-                {data.map((item, index) => (
-                  <div key={index}>
-                    <h5 className="card-title"><u>{item.title}</u></h5>
-                    <p className="card-text">{item.description}</p>
-                    
-                    <button  className="btn btn-danger" onClick={() => deleteNews(item._id)}>
-                    <FontAwesomeIcon icon={faTrashAlt} style={{"--fa-primary-color": "#0052e0", "--fa-secondary-color": "#0050db",}} />
-                    </button>
-                    <hr />
-                  </div>
-                ))}
+        <div className="">
+          <div className="">
+            {data.map((item, index) => (
+              <div key={index} className="card mb-5 mt-5 bg-crime">
+                <div className="card-body">
+                  <h5 className="card-title mb-4">
+                    <u>{item.title}</u>
+                  </h5>
+                  <p className="card-text">{item.description}</p>
+
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => deleteNews(item._id)}
+                  >
+                    <FontAwesomeIcon
+                      icon={faTrashAlt}
+                      style={{
+                        "--fa-primary-color": "#0052e0",
+                        "--fa-secondary-color": "#0050db",
+                      }}
+                    />
+                  </button>
+                  <hr />
+                </div>
               </div>
-            </div>
-          </div>
-          <div className="col-md-4 d-flex justify-content-center align-items-center">
-            <img
-              src="https://cdn.pixabay.com/photo/2016/11/27/08/23/internet-1862311_640.jpg"
-              alt=""
-              className="img-fluid"
-            />
+            ))}
           </div>
         </div>
       </div>
