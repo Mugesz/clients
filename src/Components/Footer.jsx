@@ -8,7 +8,7 @@ const Footer = () => {
     >
       <div className="my-2">github</div>
       <div className="my-2">linkedin</div>
-      <div className="my-2">Instagram</div>
+      <div className="my-2">🌙 Instagram</div>
     </div>
   );
 };
