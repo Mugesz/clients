@@ -35,16 +35,17 @@ const CrimeSection = () => {
   if (data.length === 0) {
     return <h1>...Loading</h1>;
   }
+  
   return (
     <>
       <div className="container top-crime">
         <div className="text-center">
-          <b className="display-3">
+          <b className="display-6">
             <img
               src="https://images.news18.com/ibnlive/uploads/2022/08/crime-in-india-166185841216x9.jpg"
               alt=""
               className="rounded me-3"
-              height="100px"
+              height="80px"
               width="100px"
             />
             CRIME NEWS{" "}
@@ -57,10 +58,10 @@ const CrimeSection = () => {
             </Link>
           </b>
         </div>
-        <div className="">
-          <div className="">
-            {data.map((item, index) => (
-              <div key={index} className="card mb-5 mt-5 bg-crime">
+        <div className="row">
+          {data.map((item, index) => (
+            <div key={index} className="col-md-4">
+              <div className="card mb-5 d-flex mt-5 bg-crime">
                 <div className="card-body">
                   <h5 className="card-title mb-4">
                     <u>{item.title}</u>
@@ -82,8 +83,8 @@ const CrimeSection = () => {
                   <hr />
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </div>
     </>

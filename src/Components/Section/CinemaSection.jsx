@@ -37,7 +37,7 @@ const CinemaSection = () => {
   }
 
   return (
-    <div className="container mt-3 ">
+    <div className="container mt-3">
       <div className="text-center mb-3">
         <b className="display-3">
           <img
@@ -58,10 +58,10 @@ const CinemaSection = () => {
         </b>
       </div>
 
-      <div className="row justify-content-center">
-        <div className="col-lg-8">
-          {data.map((item, index) => (
-            <div key={index} className="card mb-3 bg-cinema">
+      <div className="row">
+        {data.map((item, index) => (
+          <div key={index} className="col-md-4">
+            <div className="card mb-5 bg-cinema">
               <div className="card-body">
                 <h5 className="card-title">
                   <u>{item.title}</u>
@@ -82,8 +82,8 @@ const CinemaSection = () => {
                 <hr />
               </div>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     </div>
   );
