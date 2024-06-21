@@ -39,16 +39,16 @@ const Politics = () => {
   }
 
   return (
-    <div className="container mt-5 mb-5" > 
+    <div className="container mt-5 mb-5">
       <div className="text-center mb-4">
-        <b className="display-3 text-light">
-        <img
-              src="https://images.theconversation.com/files/582433/original/file-20240318-22-yg77o7.jpg?ixlib=rb-4.1.0&rect=264%2C13%2C3723%2C1861&q=45&auto=format&w=668&h=324&fit=crop"
-              alt=""
-              className="rounded me-3"
-              height="100px"
-              width="100px"
-            />
+        <b className="display-6 text-white">
+          <img
+            src="https://images.theconversation.com/files/582433/original/file-20240318-22-yg77o7.jpg?ixlib=rb-4.1.0&rect=264%2C13%2C3723%2C1861&q=45&auto=format&w=668&h=324&fit=crop"
+            alt=""
+            className="rounded me-3"
+            height="100px"
+            width="100px"
+          />
           Politics{" "}
           <Link to={"/politicsNews"}>
             <FontAwesomeIcon
@@ -59,24 +59,26 @@ const Politics = () => {
           </Link>
         </b>
       </div>
+
       <div className="row justify-content-center">
         {data.map((item, index) => (
           <div key={index} className="col-lg-6 col-md-8 col-sm-10">
-            <div className="card mb-4">
+            <div className="card mb-4 bg-transparent border-light text-white">
               <div className="card-body">
                 <h5 className="card-title mb-4">
                   <u>{item.title}</u>
                 </h5>
                 <p className="card-text">{item.description}</p>
                 <button
-                  className="btn btn-danger"
+                  className="btn btn-danger btn-sm"
                   onClick={() => deleteNews(item._id)}
+                  style={{ color: "#ffffff", background: "none", border: "none" }}
                 >
                   <FontAwesomeIcon
                     icon={faTrashAlt}
                     style={{
-                      "--fa-primary-color": "#0052e0",
-                      "--fa-secondary-color": "#0050db",
+                      "--fa-primary-color": "#ffffff",
+                      "--fa-secondary-color": "#ffffff",
                     }}
                   />
                 </button>

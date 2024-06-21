@@ -32,20 +32,20 @@ const Worldnews = () => {
     fetchNews();
   }, []);
 
-  if(data.length === 0){
-    return <h1>...Loading</h1>
+  if (data.length === 0) {
+    return <h1>...Loading</h1>;
   }
 
   return (
     <div className="container mt-3">
       <div className="text-center mb-3">
-        <b className="display-3">
+        <b className="display-6 text-white">
           WORLD NEWS{" "}
           <Link to="/worldNews">
             <FontAwesomeIcon
               className="plus"
               icon={faPlus}
-              style={{ color: "#000000" }}
+              style={{ color: "#ffffff" }}
             />
           </Link>
         </b>
@@ -55,30 +55,34 @@ const Worldnews = () => {
         <div className="col-md-8">
           <img
             src="https://wallpapers.com/images/hd/world-globe-hufe8df2snrioyyp.jpg"
-            className=" img-fluid rounded-circle"
+            className="img-fluid rounded-circle mb-3"
             alt=""
             height="400px"
             width="500px"
           />
-          <div className="card">
-            {data.map((item, index) => (
-              <div key={index} className="card-body text-center">
-                <h5 className="card-title"><u>{item.title}</u></h5>
+          {data.map((item, index) => (
+            <div key={index} className="card mb-3 bg-transparent border-light text-white">
+              <div className="card-body text-center">
+                <h5 className="card-title">
+                  <u>{item.title}</u>
+                </h5>
                 <p className="card-text">{item.description}</p>
-                <small>
-                  <button  className="btn btn-danger" onClick={() => deleteNews(item._id)}>
-                    <FontAwesomeIcon
-                      icon={faTrashAlt}
-                      style={{
-                        "--fa-primary-color": "#0052e0",
-                        "--fa-secondary-color": "#0050db",
-                      }}
-                    />
-                  </button>
-                </small>
+                <button
+                  className="btn"
+                  onClick={() => deleteNews(item._id)}
+                  style={{ color: "#ffffff", background: "none", border: "none" }}
+                >
+                  <FontAwesomeIcon
+                    icon={faTrashAlt}
+                    style={{
+                      "--fa-primary-color": "#ffffff",
+                      "--fa-secondary-color": "#ffffff",
+                    }}
+                  />
+                </button>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>

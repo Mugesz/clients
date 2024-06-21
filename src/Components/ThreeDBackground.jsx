@@ -38,6 +38,8 @@ const ThreeDBackground = () => {
       const geometry = new THREE.SphereGeometry(radius, detail, detail);
       const material = new THREE.MeshStandardMaterial({
         map: new THREE.TextureLoader().load(texture),
+        emissive: 0x072534,
+        side: THREE.DoubleSide,
       });
       return new THREE.Mesh(geometry, material);
     };
@@ -65,9 +67,13 @@ const ThreeDBackground = () => {
       requestAnimationFrame(animate);
 
       spheres.forEach((sphere, index) => {
-        sphere.rotation.x += 0.005;
-        sphere.rotation.y += 0.005;
+        sphere.rotation.x += 0.01;
+        sphere.rotation.y += 0.01;
         sphere.position.y += Math.sin(Date.now() * 0.001 + index) * 0.01;
+        sphere.scale.x = 1 + Math.sin(Date.now() * 0.001 + index) * 0.05;
+        sphere.scale.y = 1 + Math.sin(Date.now() * 0.001 + index) * 0.05;
+        sphere.scale.z = 1 + Math.sin(Date.now() * 0.001 + index) * 0.05;
+        sphere.material.emissiveIntensity = Math.sin(Date.now() * 0.001 + index) * 0.5 + 0.5;
       });
 
       renderer.render(scene, camera);

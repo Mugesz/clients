@@ -35,59 +35,58 @@ const CrimeSection = () => {
   if (data.length === 0) {
     return <h1>...Loading</h1>;
   }
-  
-  return (
-    <>
-      <div className="container top-crime">
-        <div className="text-center">
-          <b className="display-6">
-            <img
-              src="https://images.news18.com/ibnlive/uploads/2022/08/crime-in-india-166185841216x9.jpg"
-              alt=""
-              className="rounded me-3"
-              height="80px"
-              width="100px"
-            />
-            CRIME NEWS{" "}
-            <Link to="/crimeNews">
-              <FontAwesomeIcon
-                className="plus"
-                icon={faPlus}
-                style={{ color: "#000000" }}
-              />
-            </Link>
-          </b>
-        </div>
-        <div className="row">
-          {data.map((item, index) => (
-            <div key={index} className="col-md-4">
-              <div className="card mb-5 d-flex mt-5 bg-crime">
-                <div className="card-body">
-                  <h5 className="card-title mb-4">
-                    <u>{item.title}</u>
-                  </h5>
-                  <p className="card-text">{item.description}</p>
 
-                  <button
-                    className="btn btn-danger"
-                    onClick={() => deleteNews(item._id)}
-                  >
-                    <FontAwesomeIcon
-                      icon={faTrashAlt}
-                      style={{
-                        "--fa-primary-color": "#0052e0",
-                        "--fa-secondary-color": "#0050db",
-                      }}
-                    />
-                  </button>
-                  <hr />
-                </div>
+  return (
+    <div className="container top-crime">
+      <div className="text-center">
+        <b className="display-6 text-white">
+          <img
+            src="https://images.news18.com/ibnlive/uploads/2022/08/crime-in-india-166185841216x9.jpg"
+            alt=""
+            className="rounded me-3"
+            height="80px"
+            width="100px"
+          />
+          CRIME NEWS{" "}
+          <Link to="/crimeNews">
+            <FontAwesomeIcon
+              className="plus"
+              icon={faPlus}
+              style={{ color: "#ffffff" }}
+            />
+          </Link>
+        </b>
+      </div>
+      <div className="row">
+        {data.map((item, index) => (
+          <div key={index} className="col-md-4">
+            <div className="card mb-5 mt-5 bg-transparent border-light text-white">
+              <div className="card-body">
+                <h5 className="card-title mb-4">
+                  <u>{item.title}</u>
+                </h5>
+                <p className="card-text">{item.description}</p>
+
+                <button
+                  className="btn btn-danger"
+                  onClick={() => deleteNews(item._id)}
+                  style={{ color: "#ffffff", background: "none", border: "none" }}
+                >
+                  <FontAwesomeIcon
+                    icon={faTrashAlt}
+                    style={{
+                      "--fa-primary-color": "#ffffff",
+                      "--fa-secondary-color": "#ffffff",
+                    }}
+                  />
+                </button>
+                <hr className="bg-light" />
               </div>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
-    </>
+    </div>
   );
 };
 

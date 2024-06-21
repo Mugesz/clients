@@ -57,20 +57,20 @@ const SportsAndWorldNews = () => {
   return (
     <div className="container mt-5 mb-5">
       <div className="text-center mb-3">
-        <b className="display-3">
-        <img
-              src="https://img.freepik.com/free-photo/golf-course-wallpapers-that-are-high-definition_1340-43300.jpg"
-              alt=""
-              className="rounded me-3"
-              height="100px"
-              width="100px"
-            />
-          SPORTS & WORLD NEWS
+        <b className="display-6 text-white">
+          <img
+            src="https://img.freepik.com/free-photo/golf-course-wallpapers-that-are-high-definition_1340-43300.jpg"
+            alt=""
+            className="rounded me-3"
+            height="100px"
+            width="100px"
+          />
+          SPORTS & WORLD NEWS{" "}
           <Link to="/sportsNews">
             <FontAwesomeIcon
               className="plus"
               icon={faPlus}
-              style={{ color: "#000000", marginLeft: "10px" }}
+              style={{ color: "#ffffff", marginLeft: "10px" }}
             />
           </Link>
         </b>
@@ -78,40 +78,56 @@ const SportsAndWorldNews = () => {
 
       <div className="row">
         <div className="col-md-6">
-          <div className="card mb-3">
+          <div className="card mb-3 bg-transparent border-light text-white">
             <div className="card-header">Sports News</div>
             <div className="card-body">
               {sportsNews.map((item, index) => (
-                <div key={index} className="text-center">
-                  <h5 className="card-title"><u>{item.title}</u></h5>
+                <div key={index} className="text-center mb-4">
+                  <h5 className="card-title">
+                    <u>{item.title}</u>
+                  </h5>
                   <p className="card-text">{item.description}</p>
-                  <button className="btn btn-danger" onClick={() => deleteSportsNews(item._id)}>
+                  <button
+                    className="btn btn-danger btn-sm"
+                    onClick={() => deleteSportsNews(item._id)}
+                    style={{ color: "#ffffff", background: "none", border: "none" }}
+                  >
                     <FontAwesomeIcon
                       icon={faTrashAlt}
-                      style={{ "--fa-primary-color": "#0052e0", "--fa-secondary-color": "#0050db" }}
+                      style={{
+                        "--fa-primary-color": "#ffffff",
+                        "--fa-secondary-color": "#ffffff",
+                      }}
                     />
                   </button>
-                  <hr />
                 </div>
               ))}
             </div>
           </div>
         </div>
         <div className="col-md-6">
-          <div className="card">
+          <div className="card bg-transparent border-light text-white">
             <div className="card-header">World News</div>
             <div className="card-body">
               {worldNews.map((item, index) => (
-                <div key={index} className="text-center">
-                  <h5 className="card-title"><u>{item.title}</u></h5>
+                <div key={index} className="text-center mb-4">
+                  <h5 className="card-title">
+                    <u>{item.title}</u>
+                  </h5>
                   <p className="card-text">{item.description}</p>
-                  <button className="btn btn-danger" onClick={() => deleteWorldNews(item._id)}>
+                  <button
+                    className="btn btn-danger btn-sm"
+                    onClick={() => deleteWorldNews(item._id)}
+                    style={{ color: "#ffffff", background: "none", border: "none" }}
+                  >
                     <FontAwesomeIcon
                       icon={faTrashAlt}
-                      style={{ "--fa-primary-color": "#0052e0", "--fa-secondary-color": "#0050db" }}
+                      style={{
+                        "--fa-primary-color": "#ffffff",
+                        "--fa-secondary-color": "#ffffff",
+                      }}
                     />
                   </button>
-                  <hr />
                 </div>
               ))}
             </div>

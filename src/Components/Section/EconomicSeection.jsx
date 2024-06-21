@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus,faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { config } from "../fetch";
 import { Link } from "react-router-dom";
@@ -33,48 +33,56 @@ const EconomicSection = () => {
   useEffect(() => {
     fetchNews();
   }, []);
-  if(data.length === 0){
-    return <h1>...Loading</h1>
+
+  if (data.length === 0) {
+    return <h1>...Loading</h1>;
   }
+
   return (
     <div className="container mt-5 mb-5">
       <div className="text-center mb-3">
-        <b className="display-3">
-        <img
-              src="https://png.pngtree.com/thumb_back/fw800/background/20230907/pngtree-more-economic-news-from-hong-kong-image_13348332.jpg"
-              alt=""
-              className="rounded me-3"
-              height="100px"
-              width="100px"
-            />
+        <b className="display-6 text-white">
+          <img
+            src="https://png.pngtree.com/thumb_back/fw800/background/20230907/pngtree-more-economic-news-from-hong-kong-image_13348332.jpg"
+            alt=""
+            className="rounded me-3"
+            height="100px"
+            width="100px"
+          />
           ECONOMICS NEWS{" "}
           <Link to={"/economicsNews"}>
             <FontAwesomeIcon
               className="plus"
               icon={faPlus}
-              style={{ color: "#000000" }}
+              style={{ color: "#ffffff" }}
             />
           </Link>
         </b>
       </div>
 
-      <div className="d-flex gap-3">
-        <div className="justify-content-center gap-5">
-          <div className="card-group">
-            {data.map((item, index) => (
-              <div key={index} className="card mb-3">
-                <div className="card-body">
-                  <h5 className="card-title mb-4"><u>{item.title}</u></h5>
-                  <p className="card-text">{item.description}</p>
-                  <small>
-                    <button className="btn btn-danger" onClick={()=>deleteNews(item._id)}>
-                    <FontAwesomeIcon icon={faTrashAlt} style={{"--fa-primary-color": "#0052e0", "--fa-secondary-color": "#0050db",}} />
-                    </button>
-                  </small>
-                </div>
+      <div className="d-flex gap-3 justify-content-center">
+        <div className="card-group">
+          {data.map((item, index) => (
+            <div key={index} className="card mb-3 bg-transparent border-light text-white">
+              <div className="card-body">
+                <h5 className="card-title mb-4"><u>{item.title}</u></h5>
+                <p className="card-text">{item.description}</p>
+                <button
+                  className="btn btn-danger btn-sm"
+                  onClick={() => deleteNews(item._id)}
+                  style={{ color: "#ffffff", background: "none", border: "none" }}
+                >
+                  <FontAwesomeIcon
+                    icon={faTrashAlt}
+                    style={{
+                      "--fa-primary-color": "#ffffff",
+                      "--fa-secondary-color": "#ffffff",
+                    }}
+                  />
+                </button>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>
