@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
@@ -7,6 +7,8 @@ import { Link } from "react-router-dom";
 
 const CinemaSection = () => {
   const [data, setData] = useState([]);
+  const [isVisible, setIsVisible] = useState(false);
+  const componentRef = useRef(null);
 
   const fetchNews = async () => {
     try {
@@ -29,6 +31,23 @@ const CinemaSection = () => {
   };
 
   useEffect(() => {
+    const handleScroll = () => {
+      if (componentRef.current) {
+        const top = componentRef.current.getBoundingClientRect().top;
+        const isVisible = top < window.innerHeight;
+        setIsVisible(isVisible);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Check initial state on mount
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
     fetchNews();
   }, []);
 
@@ -37,7 +56,7 @@ const CinemaSection = () => {
   }
 
   return (
-    <div className="container mt-3">
+    <div ref={componentRef} className={`container mt-3 ${isVisible ? 'slide-in-from-bottom' : ''}`}>
       <div className="text-center mb-3">
         <b className="display-6 text-white">
           <img

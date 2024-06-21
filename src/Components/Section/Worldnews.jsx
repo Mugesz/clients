@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { config } from "../fetch";
 import { Link } from "react-router-dom";
+import "./Worldnews.css"; // Import your CSS file with animations
 
 const Worldnews = () => {
   const [data, setData] = useState([]);
+  const [isVisible, setIsVisible] = useState(false);
+  const componentRef = useRef(null);
 
   const fetchNews = async () => {
     try {
@@ -32,9 +35,22 @@ const Worldnews = () => {
     fetchNews();
   }, []);
 
-  if (data.length === 0) {
-    return <h1>...Loading</h1>;
-  }
+  useEffect(() => {
+    const handleScroll = () => {
+      if (componentRef.current) {
+        const top = componentRef.current.getBoundingClientRect().top;
+        const isVisible = top < window.innerHeight;
+        setIsVisible(isVisible);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Check initial state on mount
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <div className="container mt-3">
@@ -61,7 +77,11 @@ const Worldnews = () => {
             width="500px"
           />
           {data.map((item, index) => (
-            <div key={index} className="card mb-3 bg-transparent border-light text-white">
+            <div
+              key={index}
+              ref={componentRef}
+              className={`card mb-3 bg-transparent border-light text-white ${isVisible ? 'slide-in' : ''}`}
+            >
               <div className="card-body text-center">
                 <h5 className="card-title">
                   <u>{item.title}</u>

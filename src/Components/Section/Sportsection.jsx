@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
@@ -8,6 +8,8 @@ import { Link } from "react-router-dom";
 const SportsAndWorldNews = () => {
   const [sportsNews, setSportsNews] = useState([]);
   const [worldNews, setWorldNews] = useState([]);
+  const [isVisible, setIsVisible] = useState(false);
+  const componentRef = useRef(null);
 
   const fetchSportsNews = async () => {
     try {
@@ -54,6 +56,23 @@ const SportsAndWorldNews = () => {
     fetchWorldNews();
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (componentRef.current) {
+        const top = componentRef.current.getBoundingClientRect().top;
+        const isVisible = top < window.innerHeight;
+        setIsVisible(isVisible);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Check initial state on mount
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <div className="container mt-5 mb-5">
       <div className="text-center mb-3">
@@ -78,7 +97,10 @@ const SportsAndWorldNews = () => {
 
       <div className="row">
         <div className="col-md-6">
-          <div className="card mb-3 bg-transparent border-light text-white">
+          <div
+            ref={componentRef}
+            className={`card mb-3 bg-transparent border-light text-white ${isVisible ? 'slide-in' : ''}`}
+          >
             <div className="card-header">Sports News</div>
             <div className="card-body">
               {sportsNews.map((item, index) => (
@@ -106,7 +128,10 @@ const SportsAndWorldNews = () => {
           </div>
         </div>
         <div className="col-md-6">
-          <div className="card bg-transparent border-light text-white">
+          <div
+            ref={componentRef}
+            className={`card mb-3 bg-transparent border-light text-white ${isVisible ? 'slide-in' : ''}`}
+          >
             <div className="card-header">World News</div>
             <div className="card-body">
               {worldNews.map((item, index) => (

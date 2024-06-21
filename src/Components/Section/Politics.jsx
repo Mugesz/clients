@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
@@ -7,6 +7,8 @@ import { Link } from "react-router-dom";
 
 const Politics = () => {
   const [data, setData] = useState([]);
+  const [isVisible, setIsVisible] = useState(false);
+  const componentRef = useRef(null);
 
   const fetchNews = async () => {
     try {
@@ -32,6 +34,23 @@ const Politics = () => {
 
   useEffect(() => {
     fetchNews();
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (componentRef.current) {
+        const top = componentRef.current.getBoundingClientRect().top;
+        const isVisible = top < window.innerHeight;
+        setIsVisible(isVisible);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Check initial state on mount
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   if (data.length === 0) {
@@ -62,7 +81,10 @@ const Politics = () => {
 
       <div className="row justify-content-center">
         {data.map((item, index) => (
-          <div key={index} className="col-lg-6 col-md-8 col-sm-10">
+          <div
+            key={index}
+            className={`col-lg-6 col-md-8 col-sm-10 ${isVisible ? 'slide-in' : ''}`}
+          >
             <div className="card mb-4 bg-transparent border-light text-white">
               <div className="card-body">
                 <h5 className="card-title mb-4">
@@ -72,7 +94,11 @@ const Politics = () => {
                 <button
                   className="btn btn-danger btn-sm"
                   onClick={() => deleteNews(item._id)}
-                  style={{ color: "#ffffff", background: "none", border: "none" }}
+                  style={{
+                    color: "#ffffff",
+                    background: "none",
+                    border: "none",
+                  }}
                 >
                   <FontAwesomeIcon
                     icon={faTrashAlt}

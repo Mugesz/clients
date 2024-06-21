@@ -32,20 +32,17 @@
   background-color:#ECECEC !important;
   color: #333333 !important;
 }
+.slide-in-from-bottom {
+  animation: slideInFromBottom 500ms ease-out;
+}
 
-/* Define the animation */
-@keyframes slideUp {
-  from {
+@keyframes slideInFromBottom {
+  0% {
     transform: translateY(100%);
     opacity: 0;
   }
-  to {
+  100% {
     transform: translateY(0);
     opacity: 1;
   }
-}
-
-/* Apply the animation */
-.slide-up {
-  animation: slideUp 250ms ease-in-out;
 }
