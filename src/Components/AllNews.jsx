@@ -4,18 +4,21 @@ import EconomicSeection from "./Section/EconomicSeection";
 import Politics from "./Section/Politics";
 import CinemaSection from "./Section/CinemaSection";
 import Sportsection from "./Section/Sportsection";
-import Worldnews from "./Section/Worldnews";
 import Footer from "./Footer";
+import ThreeDBackground from "./ThreeDBackground";
 
 const AllNews = () => {
   return (
     <>
-      <CrimeSection />
-      <EconomicSeection />
-      <Politics />
-      <CinemaSection />
-      <Sportsection />
-      <Footer />
+      <ThreeDBackground />
+      <div style={{ position: 'relative', zIndex: 1 }}>
+        <CrimeSection />
+        <EconomicSeection />
+        <Politics />
+        <CinemaSection />
+        <Sportsection />
+        <Footer />
+      </div>
     </>
   );
 };

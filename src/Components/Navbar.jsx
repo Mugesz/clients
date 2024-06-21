@@ -6,7 +6,7 @@ const Navbar = ({ logout, userData }) => {
   return (
     <nav
       className="navbar navbar-expand-lg navbar-light text-light fixed-top mt-0"
-      style={{ backgroundColor: "#e8280b" }}
+      style={{ backgroundColor: "#000000", opacity:"0.8" }}
     >
       <div className="container">
         <a className="navbar-brand nav-clr" href="#">

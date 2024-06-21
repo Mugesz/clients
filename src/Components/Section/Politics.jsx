@@ -39,7 +39,7 @@ const Politics = () => {
   }
 
   return (
-    <div className="container-fluid mt-5 mb-5" style={{ backgroundColor: '#e8280b' }}> 
+    <div className="container mt-5 mb-5" > 
       <div className="text-center mb-4">
         <b className="display-3 text-light">
         <img

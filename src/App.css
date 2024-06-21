@@ -23,11 +23,13 @@
 }
 
 .bg-crime{
- background-color: rgb(232, 232, 232) !important;
+ background-color: #ECECEC  !important;
+ color: #333333 !important;
 }
 
 .bg-cinema{
-  background-color: rgb(240, 228, 228) !important;
+  background-color:#ECECEC !important;
+  color: #333333 !important;
 }
 
 /* Define the animation */

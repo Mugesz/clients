@@ -58,7 +58,7 @@ const EconomicSection = () => {
         </b>
       </div>
 
-      <div className="d-flex">
+      <div className="d-flex gap-3">
         <div className="justify-content-center gap-5">
           <div className="card-group">
             {data.map((item, index) => (
