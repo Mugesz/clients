@@ -33,7 +33,7 @@
   color: #333333 !important;
 }
 .slide-in-from-bottom {
-  animation: slideInFromBottom 500ms ease-out;
+  animation: slideInFromBottom 250ms ease-out;
 }
 
 @keyframes slideInFromBottom {
