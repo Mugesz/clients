@@ -53,9 +53,7 @@ const EconomicSection = () => {
     };
   }, []);
 
-  if (data.length === 0) {
-    return <h1>...Loading</h1>;
-  }
+ 
 
   return (
     <div ref={componentRef} className="container mt-5 mb-5">

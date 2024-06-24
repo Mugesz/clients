@@ -55,9 +55,7 @@ const CinemaSection = () => {
     fetchNews();
   }, []);
 
-  if (data.length === 0) {
-    return <h1>...Loading</h1>;
-  }
+  
 
   return (
     <div ref={componentRef} className={`container mt-3 ${isVisible ? 'slide-in-from-bottom' : ''}`}>

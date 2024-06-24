@@ -51,9 +51,6 @@ const CrimeSection = () => {
     fetchNews();
   }, []);
 
-  if (data.length === 0) {
-    return <h1>...Loading</h1>;
-  }
 
   return (
     <div ref={componentRef} className={`container top-crime ${isVisible ? 'slide-in-from-bottom' : ''}`}>
