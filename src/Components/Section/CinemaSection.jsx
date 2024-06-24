@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 const CinemaSection = () => {
   const [data, setData] = useState([]);
   const [isVisible, setIsVisible] = useState(false);
+  const [hasBeenVisible, setHasBeenVisible] = useState(false);
   const componentRef = useRef(null);
 
   const fetchNews = async () => {
@@ -35,7 +36,10 @@ const CinemaSection = () => {
       if (componentRef.current) {
         const top = componentRef.current.getBoundingClientRect().top;
         const isVisible = top < window.innerHeight;
-        setIsVisible(isVisible);
+        if (isVisible && !hasBeenVisible) {
+          setIsVisible(true);
+          setHasBeenVisible(true);
+        }
       }
     };
 
@@ -45,7 +49,7 @@ const CinemaSection = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [hasBeenVisible]);
 
   useEffect(() => {
     fetchNews();
