@@ -12,8 +12,13 @@ const CrimeSection = () => {
 
   const fetchNews = async () => {
     try {
-      const response = await axios.get(`${config.Api}/crimenews/getAllNews`);
-      setData(response.data);
+      const response = await axios.get("https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=69ed0fe682d84788b7b2339a351a0a68");
+      // Ensure data is an array
+      if (response.data && Array.isArray(response.data.articles)) {
+        setData(response.data.articles);
+      } else {
+        console.error("Unexpected response format:", response.data);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -51,19 +56,18 @@ const CrimeSection = () => {
     fetchNews();
   }, []);
 
-
   return (
     <div ref={componentRef} className={`container top-crime ${isVisible ? 'slide-in-from-bottom' : ''}`}>
       <div className="text-center">
-        <b className="display-6 text-white">
-          <img
+        <b className="display-4 text-white">
+          {/* <img
             src="https://images.news18.com/ibnlive/uploads/2022/08/crime-in-india-166185841216x9.jpg"
             alt=""
             className="rounded me-3"
             height="80px"
             width="100px"
-          />
-          CRIME NEWS{" "}
+          /> */}
+          TECH NEWS{" "}
           <Link to="/crimeNews">
             <FontAwesomeIcon
               className="plus"
@@ -78,6 +82,9 @@ const CrimeSection = () => {
           <div key={index} className="col-md-4">
             <div className="card mb-5 mt-5 bg-transparent border-light text-white">
               <div className="card-body">
+                <div className="img-div">
+                  <img src={item.urlToImage} alt="" style={{height:"250px", width:"100%"}} />
+                </div>
                 <h5 className="card-title mb-4">
                   <u>{item.title}</u>
                 </h5>

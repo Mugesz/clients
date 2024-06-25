@@ -60,14 +60,14 @@ const CinemaSection = () => {
   return (
     <div ref={componentRef} className={`container mt-3 ${isVisible ? 'slide-in-from-bottom' : ''}`}>
       <div className="text-center mb-3">
-        <b className="display-6 text-white">
-          <img
+        <b className="display-4 text-white">
+          {/* <img
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5on7t1U65vc9jBdOCmc225ybno_cqwV9gqw&usqp=CAU"
             alt=""
             className="rounded me-3"
             height="100px"
             width="100px"
-          />
+          /> */}
           CINEMA NEWS{" "}
           <Link to="/cinemaNews">
             <FontAwesomeIcon

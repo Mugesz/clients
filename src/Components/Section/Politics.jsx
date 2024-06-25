@@ -13,9 +13,14 @@ const Politics = () => {
   const fetchNews = async () => {
     try {
       const response = await axios.get(
-        `${config.Api}/politicsnews/getAllNews`
+        "https://newsapi.org/v2/everything?domains=wsj.com&apiKey=69ed0fe682d84788b7b2339a351a0a68"
       );
-      setData(response.data);
+      // Extract articles from the response
+      if (response.data && Array.isArray(response.data.articles)) {
+        setData(response.data.articles);
+      } else {
+        console.error("Unexpected response format:", response.data);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -23,7 +28,9 @@ const Politics = () => {
 
   const deleteNews = async (id) => {
     try {
-      await axios.delete(`${config.Api}/politicsnews/deleteNews/${id}`);
+      await axios.delete(
+        `${config.Api}/economicsnews/deleteNews/${id}`
+      );
       alert("Successfully deleted news");
       fetchNews();
     } catch (error) {
@@ -58,7 +65,7 @@ const Politics = () => {
   }
 
   return (
-    <div className="container mt-5 mb-5">
+    <div ref={componentRef} className="container mt-5 mb-5">
       <div className="text-center mb-4">
         <b className="display-6 text-white">
           <img
@@ -83,9 +90,18 @@ const Politics = () => {
         {data.map((item, index) => (
           <div
             key={index}
-            className={`col-lg-6 col-md-8 col-sm-10 ${isVisible ? 'slide-in' : ''}`}
+            className={`col-lg-4 col-md-6 mb-4 ${
+              isVisible ? "slide-in" : ""
+            }`}
           >
-            <div className="card mb-4 bg-transparent border-light text-white">
+            <div className="card bg-transparent border-light text-white">
+              <div className="img-div">
+                <img
+                  src={item.urlToImage}
+                  alt=""
+                  style={{ height: "250px", width: "100%" }}
+                />
+              </div>
               <div className="card-body">
                 <h5 className="card-title mb-4">
                   <u>{item.title}</u>

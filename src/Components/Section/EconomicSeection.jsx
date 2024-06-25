@@ -13,9 +13,14 @@ const EconomicSection = () => {
   const fetchNews = async () => {
     try {
       const response = await axios.get(
-        `${config.Api}/economicsnews/getAllNews`
+        "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=69ed0fe682d84788b7b2339a351a0a68"
       );
-      setData(response.data);
+      // Extract articles from the response
+      if (response.data && Array.isArray(response.data.articles)) {
+        setData(response.data.articles);
+      } else {
+        console.error("Unexpected response format:", response.data);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -53,19 +58,17 @@ const EconomicSection = () => {
     };
   }, []);
 
- 
-
   return (
     <div ref={componentRef} className="container mt-5 mb-5">
       <div className="text-center mb-3">
-        <b className="display-6 text-white">
-          <img
+        <b className="display-4 text-white">
+          {/* <img
             src="https://png.pngtree.com/thumb_back/fw800/background/20230907/pngtree-more-economic-news-from-hong-kong-image_13348332.jpg"
             alt=""
             className="rounded me-3"
             height="100px"
             width="100px"
-          />
+          /> */}
           ECONOMICS NEWS{" "}
           <Link to={"/economicsNews"}>
             <FontAwesomeIcon
@@ -77,14 +80,16 @@ const EconomicSection = () => {
         </b>
       </div>
 
-      <div className="d-flex gap-3 justify-content-center">
-        <div className="card-group">
-          {data.map((item, index) => (
+      <div className="row">
+        {data.map((item, index) => (
+          <div key={index} className="col-md-4 mb-3">
             <div
-              key={index}
-              className={`card mb-3 bg-transparent border-light text-white ${isVisible ? 'slide-in' : ''}`}
+              className={`card bg-transparent border-light text-white ${isVisible ? 'slide-in' : ''}`}
             >
               <div className="card-body">
+                <div className="img-div">
+                  <img src={item.urlToImage} alt="" style={{height:"250px", width:"100%"}} />
+                </div>
                 <h5 className="card-title mb-4">
                   <u>{item.title}</u>
                 </h5>
@@ -108,8 +113,8 @@ const EconomicSection = () => {
                 </button>
               </div>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     </div>
   );
