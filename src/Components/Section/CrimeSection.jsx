@@ -56,10 +56,10 @@ const CrimeSection = () => {
   return (
     <div
     ref={componentRef}
-    className="container mt-5 tophero"
+    className="tophero container mt-5"
   >
-    <div className="text-center mb-3">
-      <b className="display-4 text-white">
+    <div className="text-center mb-3 mt-5">
+      <b className="display-4 text-white mt-5">
         CRIME NEWS{" "}
         <Link to="/cinemaNews">
           <FontAwesomeIcon
