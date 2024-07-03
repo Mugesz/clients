@@ -13,14 +13,9 @@ const Politics = () => {
   const fetchNews = async () => {
     try {
       const response = await axios.get(
-        "https://newsapi.org/v2/everything?domains=wsj.com&apiKey=69ed0fe682d84788b7b2339a351a0a68"
+        `${config.Api}/economicsnews/getAllNews`
       );
-      // Extract articles from the response
-      if (response.data && Array.isArray(response.data.articles)) {
-        setData(response.data.articles);
-      } else {
-        console.error("Unexpected response format:", response.data);
-      }
+      setData(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -65,72 +60,58 @@ const Politics = () => {
   }
 
   return (
-    <div ref={componentRef} className="container mt-5 mb-5">
-      <div className="text-center mb-4">
-        <b className="display-6 text-white">
-          <img
-            src="https://images.theconversation.com/files/582433/original/file-20240318-22-yg77o7.jpg?ixlib=rb-4.1.0&rect=264%2C13%2C3723%2C1861&q=45&auto=format&w=668&h=324&fit=crop"
-            alt=""
-            className="rounded me-3"
-            height="100px"
-            width="100px"
+    <div
+    ref={componentRef}
+    className={`container mt-3`}
+  >
+    <div className="text-center mb-3">
+      <b className="display-4 text-white">
+        POLITICS NEWS{" "}
+        <Link to="/cinemaNews">
+          <FontAwesomeIcon
+            className="plus"
+            icon={faPlus}
+            style={{ color: "#ffffff" }}
           />
-          Politics{" "}
-          <Link to={"/politicsNews"}>
-            <FontAwesomeIcon
-              className="plus"
-              icon={faPlus}
-              style={{ color: "#ffffff" }}
-            />
-          </Link>
-        </b>
-      </div>
+        </Link>
+      </b>
+    </div>
 
-      <div className="row justify-content-center">
-        {data.map((item, index) => (
-          <div
-            key={index}
-            className={`col-lg-4 col-md-6 mb-4 ${
-              isVisible ? "slide-in" : ""
-            }`}
-          >
-            <div className="card bg-transparent border-light text-white">
-              <div className="img-div">
-                <img
-                  src={item.urlToImage}
-                  alt=""
-                  style={{ height: "250px", width: "100%" }}
-                />
-              </div>
-              <div className="card-body">
-                <h5 className="card-title mb-4">
-                  <u>{item.title}</u>
-                </h5>
-                <p className="card-text">{item.description}</p>
-                <button
-                  className="btn btn-danger btn-sm"
-                  onClick={() => deleteNews(item._id)}
+    <div className="row">
+      {data.map((item, index) => (
+        <div key={index} className="col-md-4">
+          <div className="card mb-5 bg-transparent border-light text-white">
+            <div className="card-body">
+              <h5 className="card-title">
+                <u>{item.title}</u>
+              </h5>
+              <p className="card-text text-white ">{item.description}</p>
+              <button
+                className="btn btn-danger btn-sm"
+                onClick={() => deleteNews(item._id)}
+                style={{
+                  color: "#ffffff",
+                  background: "none",
+                  border: "none",
+                }}
+              >
+                <FontAwesomeIcon
+                  icon={faTrashAlt}
                   style={{
-                    color: "#ffffff",
-                    background: "none",
-                    border: "none",
+                    "--fa-primary-color": "#ffffff",
+                    "--fa-secondary-color": "#ffffff",
                   }}
-                >
-                  <FontAwesomeIcon
-                    icon={faTrashAlt}
-                    style={{
-                      "--fa-primary-color": "#ffffff",
-                      "--fa-secondary-color": "#ffffff",
-                    }}
-                  />
-                </button>
-              </div>
+                />
+              </button>
+              <hr className="bg-light" />
             </div>
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
     </div>
+  </div>
   );
 };
 
 export default Politics;
+// "https://newsapi.org/v2/everything?domains=wsj.com&apiKey=69ed0fe682d84788b7b2339a351a0a68"
